@@ -66,7 +66,7 @@ exports.developmentErrors = (error, req, res, next) => {
 /*
   Production Error Handler
 
-  No stacktraces are leaked to admin
+  No stacktraces are leaked to artist
 */
 exports.productionErrors = (error, req, res, next) => {
   return res.status(500).json({

@@ -6,7 +6,7 @@ const paymentSchema = new mongoose.Schema({
     default: false,
   },
 
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Admin', autopopulate: true, required: true },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Artist', autopopulate: true, required: true },
   number: {
     type: Number,
     required: true,

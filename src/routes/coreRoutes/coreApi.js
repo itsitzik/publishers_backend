@@ -4,26 +4,26 @@ const { catchErrors } = require('@/handlers/errorHandlers');
 
 const router = express.Router();
 
-const adminController = require('@/controllers/coreControllers/adminController');
+const artistController = require('@/controllers/coreControllers/artistController');
 const settingController = require('@/controllers/coreControllers/settingController');
 const emailController = require('@/controllers/coreControllers/emailController');
 
 const { singleStorageUpload } = require('@/middlewares/uploadMiddleware');
 
-// //_______________________________ Admin management_______________________________
+// //_______________________________ Artist management_______________________________
 
-router.route('/admin/read/:id').get(catchErrors(adminController.read));
+router.route('/artist/read/:id').get(catchErrors(artistController.read));
 
-router.route('/admin/password-update/:id').patch(catchErrors(adminController.updatePassword));
+router.route('/artist/password-update/:id').patch(catchErrors(artistController.updatePassword));
 
-//_______________________________ Admin Profile _______________________________
+//_______________________________ Artist Profile _______________________________
 
-router.route('/admin/profile/password').patch(catchErrors(adminController.updateProfilePassword));
+router.route('/artist/profile/password').patch(catchErrors(artistController.updateProfilePassword));
 router
-  .route('/admin/profile/update')
+  .route('/artist/profile/update')
   .patch(
-    singleStorageUpload({ entity: 'admin', fieldName: 'photo', fileType: 'image' }),
-    catchErrors(adminController.updateProfile)
+    singleStorageUpload({ entity: 'artist', fieldName: 'photo', fileType: 'image' }),
+    catchErrors(artistController.updateProfile)
   );
 
 // //____________________________________________ API for Global Setting _________________

@@ -5,7 +5,7 @@ const logout = async (req, res, { userModel }) => {
 
   const token = req.cookies.token;
   await UserPassword.findOneAndUpdate(
-    { user: req.admin._id },
+    { user: req.artist._id },
     { $pull: { loggedSessions: token } },
     {
       new: true,

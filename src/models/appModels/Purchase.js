@@ -5,7 +5,7 @@ const purchaseSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Admin', required: true },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Artist', required: true },
 
   number: {
     type: Number,

@@ -45,7 +45,7 @@ const create = async (req, res) => {
   let paymentStatus = calculate.sub(total, discount) === 0 ? 'paid' : 'unpaid';
 
   body['paymentStatus'] = paymentStatus;
-  body['createdBy'] = req.admin._id;
+  body['createdBy'] = req.artist._id;
 
   // Creating a new document in the collection
   const result = await new Model(body).save();

@@ -3,13 +3,13 @@ const express = require('express');
 const router = express.Router();
 
 const { catchErrors } = require('@/handlers/errorHandlers');
-const adminAuth = require('@/controllers/coreControllers/adminAuth');
+const artistAuth = require('@/controllers/coreControllers/artistAuth');
 
-router.route('/login').post(catchErrors(adminAuth.login));
+router.route('/login').post(catchErrors(artistAuth.login));
 
-router.route('/forgetpassword').post(catchErrors(adminAuth.forgetPassword));
-router.route('/resetpassword').post(catchErrors(adminAuth.resetPassword));
+router.route('/forgetpassword').post(catchErrors(artistAuth.forgetPassword));
+router.route('/resetpassword').post(catchErrors(artistAuth.resetPassword));
 
-router.route('/logout').post(adminAuth.isValidAuthToken, catchErrors(adminAuth.logout));
+router.route('/logout').post(artistAuth.isValidAuthToken, catchErrors(artistAuth.logout));
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const adminSchema = new Schema({
+const artistSchema = new Schema({
   removed: {
     type: Boolean,
     default: false,
@@ -34,4 +34,4 @@ const adminSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Admin', adminSchema);
+module.exports = mongoose.model('Artist', artistSchema);

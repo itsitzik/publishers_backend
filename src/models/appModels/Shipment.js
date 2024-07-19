@@ -8,7 +8,7 @@ const ShipmentSchema = new mongoose.Schema({
 
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: 'Admin',
+    ref: 'Artist',
     required: true,
   },
   assigned: {

@@ -24,8 +24,8 @@ const schema = new mongoose.Schema({
   people: { type: mongoose.Schema.ObjectId, ref: 'People', autopopulate: true },
   convertedFrom: { type: mongoose.Schema.ObjectId, ref: 'Lead' },
   interestedIn: [{ type: mongoose.Schema.ObjectId, ref: 'Product' }],
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Admin' },
-  assigned: { type: mongoose.Schema.ObjectId, ref: 'Admin' },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Artist' },
+  assigned: { type: mongoose.Schema.ObjectId, ref: 'Artist' },
   source: String,
   category: String,
   created: {

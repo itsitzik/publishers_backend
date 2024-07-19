@@ -7,14 +7,14 @@ const { generate: uniqueId } = require('shortid');
 const mongoose = require('mongoose');
 
 const setup = async (req, res) => {
-  const Admin = mongoose.model('Admin');
-  const AdminPassword = mongoose.model('AdminPassword');
+  const Artist = mongoose.model('Artist');
+  const ArtistPassword = mongoose.model('ArtistPassword');
   const Setting = mongoose.model('Setting');
 
   const PaymentMode = mongoose.model('PaymentMode');
   const Taxes = mongoose.model('Taxes');
 
-  const newAdminPassword = new AdminPassword();
+  const newArtistPassword = new ArtistPassword();
 
   const { name, email, password, language, timezone, country, config = {} } = req.body;
 
@@ -39,22 +39,22 @@ const setup = async (req, res) => {
 
   const salt = uniqueId();
 
-  const passwordHash = newAdminPassword.generateHash(salt, password);
+  const passwordHash = newArtistPassword.generateHash(salt, password);
 
   const accountOwnner = {
     email,
     name,
     role: 'owner',
   };
-  const result = await new Admin(accountOwnner).save();
+  const result = await new Artist(accountOwnner).save();
 
-  const AdminPasswordData = {
+  const ArtistPasswordData = {
     password: passwordHash,
     emailVerified: true,
     salt: salt,
     user: result._id,
   };
-  await new AdminPassword(AdminPasswordData).save();
+  await new ArtistPassword(ArtistPasswordData).save();
 
   const settingData = [];
 

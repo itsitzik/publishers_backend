@@ -25,8 +25,8 @@ const schema = new mongoose.Schema({
   interestedIn: [{ type: mongoose.Schema.ObjectId, ref: 'Product' }],
   offer: [{ type: mongoose.Schema.ObjectId, ref: 'Offer' }],
   converted: { type: Boolean, default: false },
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Admin' },
-  assigned: { type: mongoose.Schema.ObjectId, ref: 'Admin' },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Artist' },
+  assigned: { type: mongoose.Schema.ObjectId, ref: 'Artist' },
   subTotal: {
     type: Number,
   },

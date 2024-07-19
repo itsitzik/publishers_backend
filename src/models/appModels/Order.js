@@ -12,7 +12,7 @@ const orderSchema = new mongoose.Schema({
 
   createdBy: {
     type: mongoose.Schema.ObjectId,
-    ref: 'Admin',
+    ref: 'Artist',
   },
 
   assigned: {

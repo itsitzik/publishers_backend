@@ -52,7 +52,7 @@ const login = async (req, res, { userModel }) => {
     return res.status(409).json({
       success: false,
       result: null,
-      message: 'Your account is disabled, contact your account adminstrator',
+      message: 'Your account is disabled, contact your account artiststrator',
     });
 
   //  authUser if your has correct password

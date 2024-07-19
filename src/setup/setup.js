@@ -9,32 +9,32 @@ mongoose.connect(process.env.DATABASE);
 
 async function setupApp() {
   try {
-    const Admin = require('../models/coreModels/Admin');
-    const AdminPassword = require('../models/coreModels/AdminPassword');
-    const newAdminPassword = new AdminPassword();
+    const Artist = require('../models/coreModels/Artist');
+    const ArtistPassword = require('../models/coreModels/ArtistPassword');
+    const newArtistPassword = new ArtistPassword();
 
     const salt = uniqueId();
 
-    const passwordHash = newAdminPassword.generateHash(salt, 'admin123');
+    const passwordHash = newArtistPassword.generateHash(salt, 'artist123');
 
-    const demoAdmin = {
-      email: 'admin@demo.com',
+    const demoArtist = {
+      email: 'artist@demo.com',
       name: 'IDURAR',
-      surname: 'Admin',
+      surname: 'Artist',
       enabled: true,
       role: 'owner',
     };
-    const result = await new Admin(demoAdmin).save();
+    const result = await new Artist(demoArtist).save();
 
-    const AdminPasswordData = {
+    const ArtistPasswordData = {
       password: passwordHash,
       emailVerified: true,
       salt: salt,
       user: result._id,
     };
-    await new AdminPassword(AdminPasswordData).save();
+    await new ArtistPassword(ArtistPasswordData).save();
 
-    console.log('👍 Admin created : Done!');
+    console.log('👍 Artist created : Done!');
 
     const Setting = require('../models/coreModels/Setting');
 

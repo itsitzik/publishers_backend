@@ -10,7 +10,7 @@ const employeeSchema = new mongoose.Schema({
     default: true,
   },
 
-  isAdmin: { type: mongoose.Schema.ObjectId, ref: 'Admin' },
+  isArtist: { type: mongoose.Schema.ObjectId, ref: 'Artist' },
   firstname: {
     type: String,
     trim: true,

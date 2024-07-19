@@ -6,7 +6,7 @@ const invoiceSchema = new mongoose.Schema({
     default: false,
   },
 
-  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Admin', required: true },
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'Artist', required: true },
   number: {
     type: Number,
     required: true,

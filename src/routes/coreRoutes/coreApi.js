@@ -8,6 +8,8 @@ const artistController = require('@/controllers/coreControllers/artistController
 const settingController = require('@/controllers/coreControllers/settingController');
 const emailController = require('@/controllers/coreControllers/emailController');
 
+const spotifyController = require('@/controllers/spotifyController');
+
 const { singleStorageUpload } = require('@/middlewares/uploadMiddleware');
 
 // //_______________________________ Artist management_______________________________
@@ -61,5 +63,9 @@ router.route('/email/search').get(catchErrors(emailController.search));
 router.route('/email/list').get(catchErrors(emailController.list));
 router.route('/email/listAll').get(catchErrors(emailController.listAll));
 router.route('/email/filter').get(catchErrors(emailController.filter));
+
+// //____________________________________________ API Spotify _________________
+router.route('/spotify/searchArtist').get(catchErrors(spotifyController.searchArtist));
+router.route('/spotify/artistTracks').get(catchErrors(spotifyController.artistTracks));
 
 module.exports = router;

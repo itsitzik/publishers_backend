@@ -10,14 +10,22 @@ const artistSchema = new Schema({
     type: Boolean,
     default: false,
   },
-
+  boarded: {
+    type: Boolean,
+    default: false,
+  },
+  spotifyArtistId: {
+    type: String,
+    required: false,
+  },
   email: {
     type: String,
     lowercase: true,
     trim: true,
     required: true,
   },
-  name: { type: String, required: true },
+  stageName: { type: String, required: true },
+  name: { type: String },
   surname: { type: String },
   photo: {
     type: String,

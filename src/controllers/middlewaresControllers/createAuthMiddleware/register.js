@@ -42,27 +42,7 @@ const register = async (req, res, { userModel }) => {
     message: 'test',
   });
 
-  const user = await UserModel.findOne({ email: email, removed: false });
-
-  // console.log(user);
-  if (!user)
-    return res.status(404).json({
-      success: false,
-      result: null,
-      message: 'No account with this email has been registered.',
-    });
-
-  const databasePassword = await UserPasswordModel.findOne({ user: user._id, removed: false });
-
-  if (!user.enabled)
-    return res.status(409).json({
-      success: false,
-      result: null,
-      message: 'Your account is disabled, contact your account artiststrator',
-    });
-
-  //  authUser if your has correct password
-  authUser(req, res, { user, databasePassword, password, UserPasswordModel });
+  //to complete
 };
 
 module.exports = register;

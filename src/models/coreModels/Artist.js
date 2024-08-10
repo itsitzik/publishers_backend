@@ -27,6 +27,10 @@ const artistSchema = new Schema({
   stageName: { type: String, required: true },
   name: { type: String },
   surname: { type: String },
+  country: {
+    type: String,
+    required: true,
+  },
   photo: {
     type: String,
     trim: true,

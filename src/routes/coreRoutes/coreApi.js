@@ -20,6 +20,8 @@ router.route('/artist/password-update/:id').patch(catchErrors(artistController.u
 
 //_______________________________ Artist Profile _______________________________
 
+router.route('/artist/boarding/update').patch(catchErrors(artistController.updateBoardingData));
+
 router.route('/artist/profile/password').patch(catchErrors(artistController.updateProfilePassword));
 router
   .route('/artist/profile/update')

@@ -1,4 +1,4 @@
-const listTimeZones = [
+const countryList = [
   {
     code: 'AF',
     countryName: 'Afghanistan',
@@ -835,3 +835,15 @@ const listTimeZones = [
     timeZones: ['Africa/Harare'],
   },
 ];
+
+const isCountryExist = (countryCode) => {
+  let foundCountry = countryList.find((countryItem) => {
+    return countryItem.code == countryCode;
+  });
+  return !!foundCountry;
+};
+
+module.exports = {
+  countryList,
+  isCountryExist,
+};

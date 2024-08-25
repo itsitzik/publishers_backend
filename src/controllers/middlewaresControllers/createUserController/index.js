@@ -1,4 +1,5 @@
 const read = require('./read');
+const userInfo = require('./userInfo');
 const updateBoardingData = require('./updateBoardingData');
 
 const updateProfile = require('./updateProfile');
@@ -9,6 +10,7 @@ const updateProfilePassword = require('./updateProfilePassword');
 const createUserController = (userModel) => {
   let userController = {};
 
+  userController.userInfo = (req, res) => userInfo(userModel, req, res);
   userController.updateBoardingData = (req, res) => updateBoardingData(userModel, req, res);
 
   userController.updateProfile = (req, res) => updateProfile(userModel, req, res);

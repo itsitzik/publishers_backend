@@ -20,6 +20,7 @@ router.route('/artist/password-update/:id').patch(catchErrors(artistController.u
 
 //_______________________________ Artist Profile _______________________________
 
+router.route('/artist/userInfo').get(catchErrors(artistController.userInfo));
 router.route('/artist/boarding/update').patch(catchErrors(artistController.updateBoardingData));
 
 router.route('/artist/profile/password').patch(catchErrors(artistController.updateProfilePassword));
@@ -68,6 +69,7 @@ router.route('/email/filter').get(catchErrors(emailController.filter));
 
 // //____________________________________________ API Spotify _________________
 router.route('/spotify/searchArtist').get(catchErrors(spotifyController.searchArtist));
+router.route('/spotify/checkArtistId').get(catchErrors(spotifyController.checkArtistId));
 router.route('/spotify/artistTracks').get(catchErrors(spotifyController.artistTracks));
 
 module.exports = router;

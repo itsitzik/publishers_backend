@@ -74,6 +74,12 @@ exports.searchArtist = async (req, res) => {
   });
 };
 
+/**
+ * not in use
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
 exports.artistPreview = async (req, res) => {
   const { artistId } = req.query;
 
@@ -126,4 +132,46 @@ exports.artistPreview = async (req, res) => {
     result: allArtistTracks,
     message: 'ok',
   });
+};
+
+/**
+ * check spotify artistId information by action
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
+exports.checkArtistId = async (req, res) => {
+  const { artistId, action } = req.query;
+
+  if (action == 'availability') {
+    if (artistId) {
+      let artistIdAvailable = spotifyApi.checkArtistIdAvailability(artistId);
+
+      if (!artistIdAvailable) {
+        return res.status(400).json({
+          success: false,
+          result: null,
+          message: 'This artist is already in use.',
+        });
+      } else {
+        return res.status(200).json({
+          success: true,
+          result: 'available',
+          message: 'ok',
+        });
+      }
+    } else {
+      return res.status(400).json({
+        success: false,
+        result: null,
+        message: 'No artistId Provided.',
+      });
+    }
+  } else {
+    return res.status(400).json({
+      success: false,
+      result: null,
+      message: 'No action provided.',
+    });
+  }
 };

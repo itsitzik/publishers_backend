@@ -4,7 +4,9 @@ const router = express.Router();
 
 const { catchErrors } = require('@/handlers/errorHandlers');
 const artistAuth = require('@/controllers/coreControllers/artistAuth');
+const testController = require('@/controllers/testController');
 
+router.route('/resetBoarding').get(catchErrors(testController.resetBoarding));
 router.route('/login').post(catchErrors(artistAuth.login));
 router.route('/register').post(catchErrors(artistAuth.register));
 

@@ -18,6 +18,15 @@ const artistSchema = new Schema({
     type: String,
     required: false,
   },
+  hasPro: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  ipiNumber: {
+    type: String,
+    required: false,
+  },
   email: {
     type: String,
     lowercase: true,
@@ -45,5 +54,29 @@ const artistSchema = new Schema({
     enum: ['owner'],
   },
 });
+
+artistSchema.methods.resetBoarding = async function () {
+  this.spotifyArtistId = null;
+  this.hasPro = null;
+  this.ipiNumber = null;
+  this.boarded = false;
+  await this.save();
+};
+
+artistSchema.methods.userInfo = function () {
+  return {
+    _id: this._id,
+    name: this.name,
+    surname: this.surname,
+    role: this.role,
+    email: this.email,
+    photo: this.photo,
+    country: this.country,
+    spotifyArtistId: this.spotifyArtistId,
+    hasPro: this.hasPro,
+    ipiNumber: this.ipiNumber,
+    boarded: this.boarded,
+  };
+};
 
 module.exports = mongoose.model('Artist', artistSchema);

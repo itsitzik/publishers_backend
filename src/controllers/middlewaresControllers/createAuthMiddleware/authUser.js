@@ -41,15 +41,7 @@ const authUser = async (req, res, { user, databasePassword, password, UserPasswo
       })
       .json({
         success: true,
-        result: {
-          _id: user._id,
-          name: user.name,
-          surname: user.surname,
-          role: user.role,
-          email: user.email,
-          photo: user.photo,
-          country: user.country,
-        },
+        result: user.userInfo(),
         message: 'Successfully login user',
       });
   } else {

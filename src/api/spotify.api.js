@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const sendApiRequest = require('./$api');
 
 const spotifyApiHostname = 'https://api.spotify.com';
@@ -179,10 +180,17 @@ const getArtistAlbumTracks = async (albumId, requestSize, offset) => {
   });
 };
 
+const checkArtistIdAvailability = async (artistId) => {
+  const UserModel = mongoose.model('Artist');
+  const user = await UserModel.findOne({ spotifyArtistId: artistId });
+  return !user;
+};
+
 module.exports = {
   searchSpotifyAritst,
   getArtistData,
   getArtistAlbums,
   getSeveralAlbums,
   getArtistAlbumTracks,
+  checkArtistIdAvailability,
 };
